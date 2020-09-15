@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -123,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "gerador-assinatura-icarus"
+    }
+  },
+  "defaultProject": "gerador-assinatura-icarus",
+  "cli": {
+    "analytics": "08fba58d-765b-497e-91fa-813bcbb5679f"
+  }
 }
