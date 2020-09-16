@@ -1,97 +1,197 @@
 <ng-container *ngIf="! assinatura">
-    <div id="gerador">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 instrucoes">
-                    <div class="divisor"></div>
-                    <h3>Como gerar a assinatura?</h3>
-                    <p>(Este tutorial funciona apenas no Google Chrome)</p>
-                    <p><strong>1)</strong> Preencha os campos solicitados ao lado.</p>
-                    <p><strong>2)</strong> Clique em “<strong>Gerar Assinatura</strong>”.</p>
-                    <p><strong>3)</strong> A assinatura gerada será mostrada em tela. <strong>Selecione todo o conteúdo usando CTRL + A (Command + A no Mac), e copie usando CTRL + C (Command + C no Mac).</strong></p>
-                    <p><strong>4)</strong> Clique na engrenagem no canto superior direito, clique em Configurações, role a página até a seção de assinatura, selecione o conteúdo existente e apague.<br>
-                    Clique na caixa de texto e cole o novo conteúdo.<br>
-                    Não esqueça de marcar o checkbox “Insira esta assinatura antes do texto da citação em respostas e remova a linha “—“ que precede esse texto.” e de clicar em salvar.</p>
-                </div>
-                <div class="col-sm-6 box-shadow">
-                    <form [formGroup]="assinaturaForm" (submit)="submitForm()">
-                        <div class="form-group">
-                            <label for="nome">Diz ai, qual o seu nome?</label>
-                            <input type="text" class="form-control" formControlName="nome" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-mail? </label>
-                            <input type="email" class="form-control" formControlName="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="cargo">Qual o seu cargo?</label>
-                            <input type="text" class="form-control" formControlName="cargo" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="tel2">Seu celular empresarial? (opcional)</label>
-                            <input type="text" class="form-control" formControlName="telefone">
-                        </div>
-                        <button type="submit" class="butt">Gerar Assinatura</button>
-                    </form>
-                </div>
-            </div>
+  <div id="gerador">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 instrucoes">
+          <div class="divisor"></div>
+          <h3>Como gerar a assinatura?</h3>
+          <p>(Este tutorial funciona apenas no Google Chrome)</p>
+          <p><strong>1)</strong> Preencha os campos solicitados ao lado.</p>
+          <p><strong>2)</strong> Clique em “<strong>Gerar Assinatura</strong>”.</p>
+          <p><strong>3)</strong> A assinatura gerada será mostrada em tela. <strong>Selecione todo o conteúdo usando
+              CTRL + A (Command + A no Mac), e copie usando CTRL + C (Command + C no Mac).</strong></p>
+          <p><strong>4)</strong> Clique na engrenagem no canto superior direito, clique em Configurações, role a página
+            até a seção de assinatura, selecione o conteúdo existente e apague.<br>
+            Clique na caixa de texto e cole o novo conteúdo.<br>
+            Não esqueça de marcar o checkbox “Insira esta assinatura antes do texto da citação em respostas e remova a
+            linha “—“ que precede esse texto.” e de clicar em salvar.</p>
         </div>
+        <div class="col-sm-6 box-shadow">
+          <form [formGroup]="assinaturaForm" (submit)="submitForm()">
+            <div class="form-group">
+              <label for="nome">Diz ai, qual o seu nome?</label>
+              <input type="text" class="form-control" formControlName="nome" required>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail? </label>
+              <input type="email" class="form-control" formControlName="email" required>
+            </div>
+            <div class="form-group">
+              <label for="cargo">Qual o seu cargo?</label>
+              <input type="text" class="form-control" formControlName="cargo" required>
+            </div>
+            <div class="form-group">
+              <label for="tel2">Seu celular empresarial? (opcional)</label>
+              <input type="text" class="form-control" formControlName="telefone">
+            </div>
+            <button type="submit" class="butt">Gerar Assinatura</button>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 </ng-container>
 
-<ng-container *ngIf="assinatura">
-    <table style="padding: 10px 0; background-color: #1a1a1a; height: 200px; width: 545px; color: #fff; font-family: 'Roboto', sans-serif;">
-        <tr>
-          <td style="width: 150px; text-align: center;" valign="middle">
-            <div style="height: 140px;">
-              <img style="margin: 20px 0;" src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-4.png" alt="asset-4">
-            </div>
-            <div style="display: inline-block;">
-              <label style="font-weight: 500; font-size: 11px; margin-bottom: 1px;color: #fff;">Follow us!</label>
-              <span style="vertical-align: middle;"><a target="blank" style="vertical-align: sub;" href="https://www.facebook.com/icarustechbr"><img src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-10.png" alt="asset-10"></a></span>
-              <span style="vertical-align: middle;"><a target="blank" style="vertical-align: sub;" href="https://www.instagram.com/icarusdevteam/"><img src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-9.png" alt="asset-9"></a></span>
-              <span style="vertical-align: middle;"><a target="blank" style="vertical-align: sub;" href="https://www.linkedin.com/company/icarus-tech/"><img src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-8.png" alt="asset-8"></a></span>
-            </div>
-          </td>
-          <td style="width: 270px;" valign="middle">
+<ng-container *ngIf="assinatura && assinaturaForm?.controls?.telefone?.value">
+  <table
+    style="padding: 10px 0; background-color: #1a1a1a; height: 200px; width: 545px; color: #fff; font-family: 'Roboto', sans-serif;">
+    <tr>
+      <td style="width: 150px; text-align: center;" valign="middle">
+        <div style="height: 140px;">
+          <img style="margin: 20px 0;" src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-4.png"
+            alt="asset-4">
+        </div>
+        <div style="display: inline-block;">
+          <label style="font-weight: 500; vertical-align: top; font-size: 11px; margin-bottom: 1px;color: #fff;">Follow us!</label>
+          <span style="vertical-align: middle;"><a target="blank" style="vertical-align: sub; padding-left: 3px;"
+              href="https://www.facebook.com/icarustechbr"><img
+                src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-10.png" alt="asset-10"></a></span>
+          <span style="vertical-align: middle;"><a target="blank" style="vertical-align: sub; padding-left: 3px;"
+              href="https://www.instagram.com/icarusdevteam/"><img
+                src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-9.png" alt="asset-9"></a></span>
+          <span style="vertical-align: middle;"><a target="blank" style="vertical-align: sub; padding-left: 3px;"
+              href="https://www.linkedin.com/company/icarus-tech/"><img
+                src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-8.png" alt="asset-8"></a></span>
+        </div>
+      </td>
+      <td style="width: 270px;" valign="middle">
+        <div>
+          <div
+            style="margin: 0; height: 140px; padding: 0 27px; border-left: 1px solid #333333; border-right: 1px solid #333333;">
             <div>
-              <div style="margin: 0; height: 140px; padding: 0 27px; border-left: 1px solid #333333; border-right: 1px solid #333333;">
-                <div>
-                  <label style="margin: 0; padding: 0; display: block; font-size: 21px; font-weight: 700;color: #fff;">{{assinaturaForm.controls.nome.value}}</label>
-                  <label style="margin: 0; padding: 0;font-size: 16px; font-weight: 300; color: #f2ae40;">{{assinaturaForm.controls.cargo.value}}</label>
-                  <div style="height: 1px; width: 120px; background-color: #B3B3B3; margin: 5px 0;"></div>
-                </div>
-                <div style="display: inline-block; margin: 0; padding: 0;">
-                  <div style="display: inline-block; margin: 0; padding: 0;">
-                    <span style="padding-right: 6px; vertical-align: text-bottom;"><img src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-12.png" alt="asset-12"></span>
-                    <a target="blank" href="https://api.whatsapp.com/send?phone=5511987311484" style="font-size: 12px; text-decoration: none; font-weight: 700; color: #fff;">+55 48 3037-2962</a>
-                  </div>
-                 
-                  <div style="display: inline-block; margin: 0; padding: 0;">
-                    <span style="padding-right: 6px; vertical-align: text-bottom;"><img src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-12.png" alt="asset-12"></span>
-                    <a target="blank" href="https://api.whatsapp.com/send?phone=5511987311484" style="font-size: 12px; text-decoration: none; font-weight: 700; color: #fff;">{{assinaturaForm.controls.telefone.value}}</a>
-                  </div>
-      
-                  <div style="display: inline-block; margin: 0; padding: 0;">
-                    <span style="padding-right: 6px; vertical-align: text-bottom;"><img src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-11.png" alt="asset-11"></span>
-                    <span><a href="" style="text-decoration: none; font-weight: 700; font-size: 12px; color: #fff; cursor: default">{{assinaturaForm.controls.email.value}}</a></span>
-                  </div>
-                </div>
+              <label
+                style="line-height: 20px; margin: 0; padding: 0; display: block; font-size: 21px; font-weight: 700;color: #fff;">{{assinaturaForm.controls.nome.value}}</label>
+              <label
+                style="line-height: 20px; margin: 0; padding: 0;font-size: 16px; font-weight: 300; color: #f2ae40;">{{assinaturaForm.controls.cargo.value}}</label>
+              <div style="height: 1px; width: 120px; background-color: #B3B3B3; margin: 5px 0;"></div>
+            </div>
+            <div style="display: inline-block; margin: 0; padding: 0;">
+              <div style="display: inline-block; margin: 0; padding: 0;">
+                <span style="padding-right: 6px; vertical-align: baseline;"><img
+                    src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-12.png" alt="asset-12"></span>
+                <a target="blank" href="https://api.whatsapp.com/send?phone=5511987311484"
+                  style="font-size: 12px; text-decoration: none; font-weight: 700; color: #fff;">+55 48 30372962</a>
+              </div>
+
+              <div style="display: inline-block; margin: 0; padding: 0;">
+                <span style="padding-right: 6px; vertical-align: baseline;"><img
+                    src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-12.png" alt="asset-12"></span>
+                <a target="blank" href="https://api.whatsapp.com/send?phone=5511987311484"
+                  style="font-size: 12px; text-decoration: none; font-weight: 700; color: #fff;">{{assinaturaForm.controls.telefone.value}}</a>
+              </div>
+
+              <div style="display: inline-block; margin: 0; padding: 0;">
+                <span style="padding-right: 6px; vertical-align: baseline;"><img
+                    src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-11.png" alt="asset-11"></span>
+                <span><a href=""
+                    style="text-decoration: none; font-weight: 700; font-size: 12px; color: #fff; cursor: default;">{{assinaturaForm.controls.email.value}}</a></span>
               </div>
             </div>
-            
-            <div style="padding: 0 27px;">
-              <a href="http://icarustech.com.br/" style="font-weight: 300; font-size: 17px; text-decoration: none; color: #fff;">Icarustech.com.br</a>
+          </div>
+        </div>
+
+        <div style="padding: 0 27px;">
+          <a href="http://icarustech.com.br/"
+            style="font-weight: 300; font-size: 17px; text-decoration: none; color: #fff;">Icarustech.com.br</a>
+        </div>
+
+      </td>
+      <td style="width: 140px; display: flex;" valign="middle">
+        <div style="margin: 10px 0; text-align: center;">
+          <img style="padding: 15px 0;"
+            src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Campanha-olympo_impresso-e-digital_pd.png"
+            alt="powerdev-logo">
+          <img style="padding: 15px 0;"
+            src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Campanha-olympo_impresso-e-digitalya.png"
+            alt="iapyx-logo">
+          <img style="padding: 15px 0;"
+            src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Campanha-olympo_impresso-e-digitalilcc.png"
+            alt="icarus-logo">
+        </div>
+      </td>
+    </tr>
+  </table>
+</ng-container>
+
+<ng-container *ngIf="assinatura && !assinaturaForm?.controls?.telefone?.value">
+  <table style="padding: 10px 0; background-color: #1a1a1a; height: 200px; width: 545px; color: #fff; font-family: 'Roboto', sans-serif;">
+    <tr>
+      <td style="width: 150px; text-align: center;" valign="middle">
+        <div style="height: 130px;">
+          <img style="margin: 20px 0;" src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-4.png"
+            alt="asset-4">
+        </div>
+        <div style="display: inline-block;">
+          <label style="font-weight: 500; vertical-align: top; font-size: 11px; margin-bottom: 1px;color: #fff;">Follow us!</label>
+          <span style="vertical-align: middle;"><a target="blank" style="vertical-align: sub; padding-left: 3px;"
+              href="https://www.facebook.com/icarustechbr"><img
+                src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-10.png" alt="asset-10"></a></span>
+          <span style="vertical-align: middle;"><a target="blank" style="vertical-align: sub; padding-left: 3px;"
+              href="https://www.instagram.com/icarusdevteam/"><img
+                src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-9.png" alt="asset-9"></a></span>
+          <span style="vertical-align: middle;"><a target="blank" style="vertical-align: sub; padding-left: 3px;"
+              href="https://www.linkedin.com/company/icarus-tech/"><img
+                src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-8.png" alt="asset-8"></a></span>
+        </div>
+      </td>
+      <td style="width: 270px;" valign="middle">
+        <div>
+          <div
+            style="margin: 0; height: 130px; padding: 0 27px; border-left: 1px solid #333333; border-right: 1px solid #333333;">
+            <div>
+              <label
+                style="line-height: 20px; margin: 0; padding: 0; display: block; font-size: 21px; font-weight: 700;color: #fff;">{{assinaturaForm.controls.nome.value}}</label>
+              <label
+                style="line-height: 20px; margin: 0; padding: 0;font-size: 16px; font-weight: 300; color: #f2ae40;">{{assinaturaForm.controls.cargo.value}}</label>
+              <div style="height: 1px; width: 120px; background-color: #B3B3B3; margin: 5px 0;"></div>
             </div>
-      
-          </td>
-          <td style="width: 140px; display: flex;"  valign="middle">
-            <div style="margin: 10px 0; text-align: center;">
-              <img style="padding: 15px 0;" src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Campanha-olympo_impresso-e-digital_pd.png" alt="powerdev-logo">
-              <img style="padding: 15px 0;" src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Campanha-olympo_impresso-e-digitalya.png" alt="iapyx-logo">
-              <img style="padding: 15px 0;" src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Campanha-olympo_impresso-e-digitalilcc.png" alt="icarus-logo">
+            <div style="display: inline-block; margin: 0; padding: 0;">
+              <div style="display: inline-block; margin: 0; padding: 0;">
+                <span style="padding-right: 6px; vertical-align: baseline;"><img
+                    src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-12.png" alt="asset-12"></span>
+                <a target="blank" href="https://api.whatsapp.com/send?phone=5511987311484"
+                  style="font-size: 12px; text-decoration: none; font-weight: 700; color: #fff;">+55 48 3037-2962</a>
+              </div>
+
+              <div style="display: inline-block; margin: 0; padding: 0;">
+                <span style="padding-right: 6px; vertical-align: baseline;"><img
+                    src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-11.png" alt="asset-11"></span>
+                <span><a href=""
+                    style="text-decoration: none; font-weight: 700; font-size: 12px; color: #fff; cursor: default;">{{assinaturaForm.controls.email.value}}</a></span>
+              </div>
             </div>
-          </td>
-        </tr>
-      </table>      
+          </div>
+        </div>
+
+        <div style="padding: 0 27px;">
+          <a href="http://icarustech.com.br/"
+            style="font-weight: 300; font-size: 17px; text-decoration: none; color: #fff;">Icarustech.com.br</a>
+        </div>
+
+      </td>
+      <td style="width: 130px; display: flex;" valign="middle">
+        <div style="margin: 10px 0; text-align: center;">
+          <img style="padding: 15px 0;"
+            src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Campanha-olympo_impresso-e-digital_pd.png"
+            alt="powerdev-logo">
+          <img style="padding: 15px 0;"
+            src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Campanha-olympo_impresso-e-digitalya.png"
+            alt="iapyx-logo">
+          <img style="padding: 15px 0;"
+            src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Campanha-olympo_impresso-e-digitalilcc.png"
+            alt="icarus-logo">
+        </div>
+      </td>
+    </tr>
+  </table>
 </ng-container>
