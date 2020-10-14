@@ -25,4 +25,12 @@ export class AppComponent implements OnInit {
     this.assinatura = true;
   }
 
+  returnWhats(tel){
+    if(tel){
+      tel = tel.replace(' ', '', tel).replace('-', '', tel);
+      return "https://api.whatsapp.com/send?phone=55" + tel;
+    } 
+    return;
+  }
+
 }

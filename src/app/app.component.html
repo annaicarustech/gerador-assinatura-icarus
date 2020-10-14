@@ -19,7 +19,7 @@
         <div class="col-sm-6 box-shadow">
           <form [formGroup]="assinaturaForm" (submit)="submitForm()">
             <div class="form-group">
-              <label for="nome">Diz ai, qual o seu nome?</label>
+              <label for="nome">Diz aí, qual o seu nome?</label>
               <input type="text" class="form-control" formControlName="nome" required>
             </div>
             <div class="form-group">
@@ -29,23 +29,24 @@
             <div class="form-group">
               <label for="cargo">Qual o seu cargo?</label>
               <select class="form-control" formControlName="cargo" required>
-                <option value="Analista de Qualidade">Analista de Qualidade</option>
-                <option value="Assistente de Projetos">Assistente de Projetos</option>
-                <option value="Auxiliar Administrativo">Auxiliar Administrativo</option>
-                <option value="Auxiliar de Suporte">Auxiliar de Suporte</option>
+                <option value="Administration">Administration</option>
                 <option value="CEO">CEO</option>
-                <option value="Estagiário">Estagiário</option>
-                <option value="Gerente de Projetos">Gerente de Projetos</option>
-                <option value="Gerente de Tecnologia">Gerente de Tecnologia</option>
-                <option value="Fullstack Software Engineer">Fullstack Software Engineer</option>
+                <option value="Commercial">Commercial</option>
+                <option value="Developer">Developer</option>
+                <option value="Fullstack Developer">Fullstack Developer</option>
+                <option value="Intern">Intern</option>
+                <option value="IT Manager">IT Manager</option>
+                <option value="Project Manager">Project Manager</option>
+                <option value="Projects">Projects</option>
+                <option value="Quality Analyst">Quality Analyst</option>
                 <option value="Requirements Analyst">Requirements Analyst</option>
                 <option value="Sales Executive">Sales Executive</option>
                 <option value="UX Designer">UX Designer</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="tel2">Seu celular empresarial? (opcional)</label>
-              <input type="text" class="form-control" formControlName="telefone">
+              <label for="tel2">Celular empresarial (com DDD)? (opcional)</label>
+              <input type="text" class="form-control" formControlName="telefone" [dropSpecialCharacters]="false" mask="00 00000-0000">
             </div>
             <button type="submit" class="butt">Gerar Assinatura</button>
           </form>
@@ -92,21 +93,21 @@
               <div style="display: inline-block; margin: 0; padding: 0;">
                 <span style="padding-right: 6px; vertical-align: baseline;"><img
                     src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-12.png" alt="asset-12"></span>
-                <a target="blank" href="https://api.whatsapp.com/send?phone=5511987311484"
-                  style="font-size: 12px; text-decoration: none; font-weight: 700; color: #fff;">+55 48 30372962</a>
+                <a target="blank" href="https://api.whatsapp.com/send?phone=554830372962"
+                  style="font-size: 12px; text-decoration: none; font-weight: 700; color: #fff;">+55 48 3037-2962</a>
               </div>
 
               <div style="display: inline-block; margin: 0; padding: 0;">
                 <span style="padding-right: 6px; vertical-align: baseline;"><img
                     src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-12.png" alt="asset-12"></span>
-                <a target="blank" href="https://api.whatsapp.com/send?phone=5511987311484"
-                  style="font-size: 12px; text-decoration: none; font-weight: 700; color: #fff;">{{assinaturaForm.controls.telefone.value}}</a>
+                <a *ngIf="assinaturaForm.controls.telefone.value" target="blank" href="{{returnWhats(assinaturaForm.controls.telefone.value)}}"
+                  style="font-size: 12px; text-decoration: none; font-weight: 700; color: #fff;">+55 {{assinaturaForm.controls.telefone.value}}</a>
               </div>
 
               <div style="display: inline-block; margin: 0; padding: 0;">
                 <span style="padding-right: 6px; vertical-align: baseline;"><img
                     src="http://www.icarustech.com.br/wp-content/uploads/2020/09/Asset-11.png" alt="asset-11"></span>
-                <span><a href=""
+                <span><a href="mailto:{{assinaturaForm.controls.email.value}}"
                     style="text-decoration: none; font-weight: 700; font-size: 12px; color: #fff; cursor: default;">{{assinaturaForm.controls.email.value}}</a></span>
               </div>
             </div>
